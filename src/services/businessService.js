@@ -1,13 +1,13 @@
-const BusinessDetails = require('../models/BusinessDetails');
+const business = require('../models/businessModel');
 
 
 const getDetails = async () => {
-    const details = await BusinessDetails.find();
+    const details = await business.find();
     return details;
 };
 
 const updateDetails = async (id, update) => {
-    const updatedDetails = await BusinessDetails.findByIdAndUpdate(id, update, { new: true, runValidators: true });
+    const updatedDetails = await business.findByIdAndUpdate(id, update, { new: true, runValidators: true });
     return updatedDetails;
 };
 

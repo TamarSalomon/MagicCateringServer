@@ -1,25 +1,25 @@
-const Orders = require('../models/Orders');
+const Order = require('../models/orderModel');
 
 
 const getOrders = async () => {
-    const orders = await Orders.find();
+    const orders = await Order.find();
     return orders;
 };
 
 
 const addOrder = async (orderData) => {
-    const newOrder = new Orders(orderData);
+    const newOrder = new Order(orderData);
     await newOrder.save();
     return newOrder;
 };
 
 const deleteOrder = async (phone) => {
-    const deletedOrder = await Orders.findOneAndDelete({ phone });
+    const deletedOrder = await Order.findOneAndDelete({ phone });
     return deletedOrder;
 };
 
 const updateOrder = async (phone, data) => {
-    const updatedOrder = await Orders.findOneAndUpdate(
+    const updatedOrder = await Order.findOneAndUpdate(
         { phone },
         data,
         { new: true }
