@@ -11,6 +11,20 @@ const getOrders = async (req, res) => {
     }
 };
 
+
+
+// const getOrdersByServiceType=async(req,res)=>{
+//     const serviceType = req.params.type;
+//     try {
+//          await orderService.getOrdersByServiceType(serviceType);
+//         res.status(200).json(orders);
+//     } catch (error) {
+//         res.status(500).json({ message: 'Failed to get orders by this serviceType', error });
+//     }
+    
+
+
+//}
 // Add Order - למשתמש רגיל
 const addOrder = async (req, res) => {
     try {
@@ -59,6 +73,7 @@ const updateOrder = async (req, res) => {
 
 module.exports = {
     getOrders,
+    // getOrdersByServiceType,
     addOrder,
     deleteOrder,
     updateOrder

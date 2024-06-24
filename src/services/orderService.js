@@ -1,11 +1,17 @@
 const Order = require('../models/orderModel');
 
-
+//מנהל
 const getOrders = async () => {
     const orders = await Order.find();
     return orders;
 };
 
+//get by servicetype
+// const getOrdersByServiceType=async(type)=>
+//     {
+//         const orders= await Order.findIndex(o=>o);
+//         return orders;
+//     }
 
 const addOrder = async (orderData) => {
     const newOrder = new Order(orderData);
@@ -33,6 +39,7 @@ const updateOrder = async (phone, data) => {
 
 module.exports = {
     getOrders,
+    // getOrdersByServiceType,
     addOrder,
     deleteOrder,
     updateOrder
