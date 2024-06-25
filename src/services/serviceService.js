@@ -6,7 +6,14 @@ const getServices = async () => {
     return servicec;
 };
 
-
+const getServiceByServiceType = async (serviceType) => {
+    try {
+        const service = await Service.find({ serviceType: serviceType });
+        return service;
+    } catch (error) {
+        throw new Error('Failed to fetch service');
+    }
+};
 
 const addService = async (serviceData) => {
     const newService = new Service(serviceData);
@@ -31,6 +38,7 @@ const updateService = async (phone, data) => {
 
 module.exports = {
     getServices,
+    getServiceByServiceType,
     addService,
     deleteService,
     updateService

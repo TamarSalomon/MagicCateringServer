@@ -9,6 +9,16 @@ const getServices= async (req, res) => {
     }
 };
 
+const getServiceByServiceType = async (req, res) => {
+    const serviceType = req.params.type;
+    try {
+        const orders = await orderService.getServiceByServiceType(serviceType);
+        res.status(200).json(orders);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to get service by this serviceType', error });
+    }
+};
+
 
 
 const addService = async (req, res) => {
@@ -50,6 +60,7 @@ const updateService = async (req, res) => {
 
 module.exports = {
     getServices,
+    getServiceByServiceType,
     addService,
     deleteService,
     updateService

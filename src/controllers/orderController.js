@@ -12,16 +12,15 @@ const getOrders = async (req, res) => {
 };
 
 
-
-// const getOrdersByServiceType=async(req,res)=>{
-//     const serviceType = req.params.type;
-//     try {
-//          await orderService.getOrdersByServiceType(serviceType);
-//         res.status(200).json(orders);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Failed to get orders by this serviceType', error });
-//     }
-    
+const getOrdersByServiceType = async (req, res) => {
+    const serviceType = req.params.type;
+    try {
+        const orders = await orderService.getOrdersByServiceType(serviceType);
+        res.status(200).json(orders);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to get orders by this serviceType', error });
+    }
+};
 
 
 //}
@@ -36,7 +35,6 @@ const addOrder = async (req, res) => {
 };
 
 
-// Delete Order - מנהל בלבד
 const deleteOrder = async (req, res) => {
     try {
         const orderPhone = req.params.phone;
@@ -53,7 +51,6 @@ const deleteOrder = async (req, res) => {
 
 
 
-// Update Order - מנהל בלבד
 const updateOrder = async (req, res) => {
     try {
         const orderPhone = req.params.phone;
@@ -73,7 +70,7 @@ const updateOrder = async (req, res) => {
 
 module.exports = {
     getOrders,
-    // getOrdersByServiceType,
+    getOrdersByServiceType,
     addOrder,
     deleteOrder,
     updateOrder

@@ -6,12 +6,15 @@ const getOrders = async () => {
     return orders;
 };
 
-//get by servicetype
-// const getOrdersByServiceType=async(type)=>
-//     {
-//         const orders= await Order.findIndex(o=>o);
-//         return orders;
-//     }
+const getOrdersByServiceType = async (serviceType) => {
+    try {
+        const orders = await Order.find({ serviceType: serviceType });
+        return orders;
+    } catch (error) {
+        throw new Error('Failed to fetch orders');
+    }
+};
+
 
 const addOrder = async (orderData) => {
     const newOrder = new Order(orderData);
@@ -39,7 +42,7 @@ const updateOrder = async (phone, data) => {
 
 module.exports = {
     getOrders,
-    // getOrdersByServiceType,
+    getOrdersByServiceType,
     addOrder,
     deleteOrder,
     updateOrder
