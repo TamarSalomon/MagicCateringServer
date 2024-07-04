@@ -6,20 +6,22 @@ const getUsers = async () => {
     return users;
 };
 
-
-const signUp = async (user) => {
+const addUser = async (user) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(user.password, salt);
-    const newUser = new User({ 
-        userId: user.userId, 
-        name: user.name, 
-        password: hashedPassword, 
-        type: user.type 
+    const newUser = new User({
+        userId: user.userId,
+        name: user.name,
+        password: hashedPassword,
+        type: user.type
     });
     await newUser.save();
     return newUser;
 };
-
+const login = async (name, password) => {
+    const updatedUser = await User.findOne({ name, password });
+    return updatedUser;
+}
 const updateUser = async (userId, data) => {
     const updatedUser = await User.findOneAndUpdate(
         { userId },
@@ -36,7 +38,8 @@ const deleteUser = async (userId) => {
 
 module.exports = {
     getUsers,
-    signUp,
+    addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 };

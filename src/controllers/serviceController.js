@@ -22,6 +22,7 @@ const getServiceByServiceType = async (req, res) => {
 
 
 const addService = async (req, res) => {
+    //קיים לי כזה עם הרשאה של מנהל משני
     try {
         const newService = await serviceService.addService(req.body);
         res.status(200).json({ message: 'The service has been successfully added', newService });
