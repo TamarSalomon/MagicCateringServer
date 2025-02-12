@@ -1,13 +1,23 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+
 
 const userSchema = new mongoose.Schema({
-    userId:String,
-    name:String,
-    password: String,
+    userId: { type: String, required: true },
+    name: { type: String, required: true },
+    password: { type: String, required: true },
     type: {
+        required: true,
         type: String,
-        enum: ["user", "mainAdmin", "admin"],
-     
+        enum: ["mainAdmin", "user", "admin"],
+    },
+    email: {
+        type: String,
+        required: true,
+        validate: {
+            validator: validator.isEmail,
+            message: props => `${props.value} is not a valid email!`
+        }
     }
 });
 

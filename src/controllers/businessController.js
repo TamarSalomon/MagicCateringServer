@@ -11,7 +11,6 @@ const getDetails = async (req, res) => {
     }
 };
 
-// Business Details
 const updateDetails = async (req, res) => {
     try {
         const id = req.body.id;

@@ -7,21 +7,28 @@ const getUsers = async () => {
 };
 
 const addUser = async (user) => {
+    if (!user.password) {
+        throw new Error('Password is required');
+    }
+    
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(user.password, salt);
     const newUser = new User({
         userId: user.userId,
         name: user.name,
         password: hashedPassword,
-        type: user.type
+        type: user.type,
+        email:user.email
     });
     await newUser.save();
     return newUser;
 };
+
 const login = async (name, password) => {
     const updatedUser = await User.findOne({ name, password });
     return updatedUser;
 }
+
 const updateUser = async (userId, data) => {
     const updatedUser = await User.findOneAndUpdate(
         { userId },
@@ -39,7 +46,7 @@ const deleteUser = async (userId) => {
 module.exports = {
     getUsers,
     addUser,
+    login,
     updateUser,
-    deleteUser,
-    login
-};
+    deleteUser
+}

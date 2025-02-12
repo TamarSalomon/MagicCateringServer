@@ -5,7 +5,8 @@
   "main": "src/config/server.js",
   "scripts": {
     "start": "node src/config/server.js",
-    "dev": "nodemon src/config/server.js"
+    "dev": "nodemon src/config/server.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -15,9 +16,20 @@
     "swagger-autogen": "^2.23.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3",
+    "validator": "^13.12.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "nodemon": "^2.0.7"
   },
   "author": "",

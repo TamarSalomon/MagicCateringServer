@@ -1,9 +1,9 @@
 const swaggerOptions = {
   swaggerDefinition: {
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'Magic Catering API',
-      version: '1.0.0',
+      title: "Magic Catering API",
+      version: "1.0.0",
       description: 'API documentation for Magic Catering project',
       contact: {
         name: 'Tamar',

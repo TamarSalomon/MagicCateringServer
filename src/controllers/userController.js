@@ -1,3 +1,5 @@
+const userService= require("../services/userService")
+
 /**
  * @swagger
  * /users:
@@ -68,17 +70,24 @@ const getUsers = async (req, res) => {
  *       500:
  *         description: Failed to sign up.
  */
-const signUp = async (req, res) => {
+async function signUp(req, res) {
     try {
-        const user = req.body;
-        user['type'] = 'user';
-        const newUser = await userService.signUp(user);
-        res.status(201).send(newUser);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send(err.message);
+        const { userId, name, password, type, email } = req.body;
+
+      
+        const userData = {
+            userId,
+            name,
+            password,
+            type,
+            email
+        }; 
+        const newUser = await userService.addUser(userData);
+        res.status(201).json(newUser);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
-};
+}
 
 /**
  * @swagger
@@ -171,7 +180,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const userId = req.params.userId;
-        const deletedUser = await userService.deleteUser(userId);
+        const deletedUser = await userService.deletedUser(userId);
         if (deletedUser) {
             res.status(200).json({ message: 'User deleted successfully' });
         } else {
