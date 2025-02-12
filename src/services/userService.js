@@ -27,7 +27,7 @@ const addUser = async (user) => {
 const login = async (name, password) => {
     const updatedUser = await User.findOne({ name, password });
     return updatedUser;
-}
+};
 
 const updateUser = async (userId, data) => {
     const updatedUser = await User.findOneAndUpdate(
@@ -49,4 +49,4 @@ module.exports = {
     login,
     updateUser,
     deleteUser
-}
+};

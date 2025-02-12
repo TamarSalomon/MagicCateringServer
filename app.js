@@ -7,7 +7,7 @@ const noteRoutes = require('./src/routes/noteRoutes');
 const orderRoutes = require('./src/routes/orderRoutes');
 const serviceRoutes = require('./src/routes/serviceRoutes');
 const userRoutes = require('./src/routes/userRoutes');
-const businessRoutes=require('./src/routes/businessRoutes')
+const businessRoutes=require('./src/routes/businessRoutes');
 
 
 app.use(bodyParser.json());
@@ -34,7 +34,7 @@ app.use('/notes', noteRoutes);
 app.use('/orders', orderRoutes);
 app.use('/services',serviceRoutes);
 app.use('/users',userRoutes);
-app.use('/business',businessRoutes)
+app.use('/business',businessRoutes);
 
 
 app.listen(port, () => {
